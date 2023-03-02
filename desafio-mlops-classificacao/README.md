@@ -1,10 +1,20 @@
-# Desafio MLOps Classificacao
+# Lighthouse MLOps Challenge - Titanic Survivors Classification
 
 ## Overview
 
-This is your new Kedro project, which was generated using `Kedro 0.18.3`.
+This is the MLOps Challenge for the Lighthouse Program on Data Science.
 
-Take a look at the [Kedro documentation](https://kedro.readthedocs.io) to get started.
+This challange presents a problem with classifying Titanic survivors, on which the available data show several characteristics of the passengers of the Titanic. There are 2 datasets available, `train.csv` with information about the passenger survival (objective variable) and the `test.cv` where these information are not available. The goal is to classify passengers regarding to the binary variable `survival`. The training dataset is used to train the model and then apply it to the test dataset to generate the predictive model.
+
+Both `train.csv` and `test.csv` can be downloaded from https://www.kaggle.com/competitions/titanic/data
+
+Also you can use your CLI to download kaggle files through their API. To do so, first you will need to install and configure your account along with kaggle's API. Read more on how to configure it on https://github.com/Kaggle/kaggle-api.
+
+If you choose to download through your CLI and have everything ready to use kaggle's API, you can download both `train.csv`and `teste.cv` using the code:
+
+`kaggle competitions download -c titanic`
+
+Also we recommend you to take a look at the [Kedro documentation](https://kedro.readthedocs.io) to get started.
 
 ## Rules and guidelines
 
@@ -15,6 +25,29 @@ In order to get the best out of the template:
 * Don't commit data to your repository
 * Don't commit any credentials or your local configuration to your repository. Keep all your credentials and local configuration in `conf/local/`
 
+## Starting Your Project
+
+To start a project on Kedro, you must create a new project with the line command below and name it:
+
+```
+kedro new
+```
+
+## Set Up the Development Environment
+
+Before start coding a new project, it's recommended to set up the development environment. 
+
+This preparation usually starts by creating a virtual enviroment (i.e. venv) allowing to install all the necessary packages, libs and project's dependencies.
+
+Creating the Virtual Environment: 
+```
+python3 -m venv venv
+```
+Activating venv: 
+```
+source venv/bin/activate
+```
+
 ## How to install dependencies
 
 Declare any dependencies in `src/requirements.txt` for `pip` installation and `src/environment.yml` for `conda` installation.
@@ -24,6 +57,20 @@ To install them, run:
 ```
 pip install -r src/requirements.txt
 ```
+
+## Data and Catalog
+
+To start with kedro and your analysis, you'll need to download the raw data files as explained earlier and allocate them in `data -> 01_raw`. After both raw data files are set on this folder, the next step is to declare/list them in the `catalog.yml` folder (`conf -> base -> catalog.yml`). To list these files, the following codes were used:
+
+```
+train_dataset:                          test_dataset:
+  type: pandas.CSVDataSet                   type: pandas.CSVDataSet
+  filepath: data/01_raw/train.csv           filepath: data/01_raw/test.csv
+  load_args:                                load_args:
+    sep: ","                                    sep: ","
+```
+
+When the catalog is done, you can use jupyter lab to start analysing the dataset and later on build your ML project on kedro.
 
 ## How to run your Kedro pipeline
 

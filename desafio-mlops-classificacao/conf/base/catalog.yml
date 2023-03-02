@@ -2,3 +2,41 @@
 #
 # Documentation for this file format can be found in "The Data Catalog"
 # Link: https://kedro.readthedocs.io/en/stable/data/data_catalog.html
+
+# Raw Dataset
+
+train_df:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/train.csv
+  load_args:
+    sep: ","
+
+test_df:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/test.csv
+  load_args:
+    sep: ","
+
+# Intermediate Outputs
+
+transformed_train_df:
+  type: pandas.CSVDataSet
+  filepath: data/02_intermediate/transformed_train_df.csv
+  load_args:
+    sep: ","
+
+transformed_test_df:
+  type: pandas.CSVDataSet
+  filepath: data/02_intermediate/transformed_test_df.csv
+  load_args:
+    sep: ","
+
+# Model Evaluation Score
+
+cv_results:
+  type: pickle.PickleDataSet
+  filepath: data/06_models/cv_results.pkl
+
+best_model:
+  type: pickle.PickleDataSet
+  filepath: data/07_model_output/best_model.pkl
