@@ -10,7 +10,7 @@ Both `train.csv` and `test.csv` can be downloaded from https://www.kaggle.com/co
 
 Also you can use your CLI to download kaggle files through their API. To do so, first you will need to install and configure your account along with kaggle's API. Read more on how to configure it on https://github.com/Kaggle/kaggle-api.
 
-If you choose to download through your CLI and have everything ready to use kaggle's API, you can download both `train.csv`and `teste.cv` using the code:
+If you choose to download through your CLI and have everything ready to use kaggle's API, you can download both `train.csv`and `test.csv` using the code:
 
 `kaggle competitions download -c titanic`
 
